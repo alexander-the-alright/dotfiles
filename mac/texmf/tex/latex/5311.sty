@@ -1,0 +1,107 @@
+% Style file for CS5311 "Theory of Computation" documents
+% Charles Wallace
+% These style settings are what I use to format the lecture notes and homework assignments.
+% Feel free to use as much (or as little) of them as you like.
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{latexsym}
+\usepackage{fullpage,parskip,paralist}
+\usepackage{amsmath,amsthm,amssymb}
+\usepackage{graphicx}
+
+\ifdefined\nosol
+  \newcommand{\sol}[1]{}
+  \newcommand{\soltitle}{}
+\else
+  \newcommand{\sol}[1]{{\bf Solution.}  #1}
+  \newcommand{\soltitle}{: Solutions}
+\fi
+
+\newcommand{\thetitle}[1]{\title{#1\soltitle}}
+\author{}
+\date{CS5311, Theory of Computation}
+
+% \ie, \eg: the abbreviations the way they are supposed to be written
+\newcommand{\ie}{{\em i.e.,}}
+\newcommand{\eg}{{\em e.g.,}}
+
+% These set common formats for various kinds of names
+% \prob{P}: name of problem/language P
+\newcommand{\prob}[1]{\mbox{\bf #1}}
+% \pprob{P}{M}: problem P restricted to machine class M
+\newcommand{\pprob}[2]{\mbox{$\prob{#1}_{\prob{\tiny #2}}$}}
+% \prog{M}: name of program/machine M
+\newcommand{\prog}[1]{\mbox{\tt #1}}
+% \enc{M}: string encoding of machine M
+\newcommand{\enc}[1]{\mbox{[\prog{#1}]}}
+% \lang{M}: language accepted by machine M
+\newcommand{\lang}[1]{\mbox{\bf L(\prog{#1})}}
+
+% definition environment (unnumbered)
+\theoremstyle{definition}
+\newtheorem*{definition}{Definition}
+% numbered environments: theorem, proof, lemma, corollary, claim
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{claim}{Claim}
+
+% Proof opening statement
+\newcommand{\prf}{{\em Proof.}}
+\newcommand{\prfout}{{\em Proof outline.}}
+
+% \code{L}{P}{I}{C}: Turing Machine code (as a box containing formatted text)
+% L: horizontal length of box
+% P: name of program
+% I: names of inputs
+% C: program code
+\newcommand{\code}[4]{\fbox{\parbox{#1}
+{\prog{#2}\hfill (Input: #3)
+\begin{enumerate}
+#4
+\end{enumerate}}}}
+
+% some common problems
+\newcommand{\atm}{\pprob{A}{TM}}
+\newcommand{\etm}{\pprob{E}{TM}}
+\newcommand{\alltm}{\pprob{All}{TM}}
+\newcommand{\acfl}{\pprob{A}{CFL}}
+\newcommand{\allcfl}{\pprob{All}{CFL}}
+\newcommand{\areg}{\pprob{A}{RL}}
+\newcommand{\allreg}{\pprob{All}{RL}}
+\newcommand{\anfa}{\pprob{A}{NFA}}
+\newcommand{\adfa}{\pprob{A}{DFA}}
+
+% \bigo{T}: big-O of term T
+\newcommand{\bigo}[1]{\mbox{O$(#1)$}}
+% \expbigo{T}: 2^(big-O of term T)
+\newcommand{\expbigo}[1]{\mbox{$2^{\mbox{O$(#1)$}}$}}
+% \bigom{T}: big-Omega of term T
+\newcommand{\bigom}[1]{\mbox{$\Omega(#1)$}}
+% time/space complexity terms
+\newcommand{\TIME}[1]{\mbox{TIME$(#1)$}}
+\newcommand{\NTIME}[1]{\mbox{NTIME$(#1)$}}
+\newcommand{\SPACE}[1]{\mbox{SPACE$(#1)$}}
+\newcommand{\NSPACE}[1]{\mbox{NSPACE$(#1)$}}
+% some common complexity classes
+\newcommand{\PTIME}{\mbox{P}}
+\newcommand{\NPTIME}{\mbox{NP}}
+\newcommand{\EXPTIME}{\mbox{EXPTIME}}
+\newcommand{\PSPACE}{\mbox{PSPACE}}
+\newcommand{\NPSPACE}{\mbox{NPSPACE}}
+\newcommand{\LSPACE}{\mbox{L}}
+\newcommand{\NLSPACE}{\mbox{NL}}
+\newcommand{\coNLSPACE}{\mbox{coNL}}
+\newcommand{\NC}{\mbox{NC}}
+\newcommand{\NPcomplete}{\NPTIME-complete}
+
+% \polyreduce{P}{Q} polynomial-time reduction relation
+\newcommand{\polyreduce}[2]{$\prob{#1}\leq_{\mbox{\small P}}\prob{#2}$}
+% \logreduce{P}{Q}: log-space reduction relation
+\newcommand{\logreduce}[2]{$\prob{#1}\leq_{\mbox{\small L}}\prob{#2}$}
+
+\newcommand{\gad}{\mathbf{Gadget}}
+\newcommand{\domino}[2]
+{\begin{tabular}{|l|} \hline $#1$\\ \hline $#2$ \\ \hline \end{tabular}}
+
