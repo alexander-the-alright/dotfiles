@@ -15,7 +15,7 @@
 brew help > out 2> errout
 rm out
 
-if [ -n errout ]; then
+if [ -s errout ]; then
     rm errout
     echo "installing brew"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -31,17 +31,8 @@ brew install rust
 brew install tmux
 brew install wireshark
 
-/usr/local/bin/gcc-13 -o donut donut.c > /dev/null 2> errout
 
-if [ -n errout ]; then
-    rm errout
-    echo "gcc failed"
-else
-    mv donut ~/
-fi
-
-
-echo "generate a github PAT"
+echo "pull up the github PAT"
 
 cd ~/Documents/
 mkdir work
@@ -51,6 +42,16 @@ git clone https://github.com/alexander-the-alright/dotfiles
 cp dotfiles/mac/.zshrc ~/
 cp dotfiles/mac/.vimrc ~/
 cp -r dotfiles/mac/.vim ~/
+
+/usr/local/bin/gcc-13 -o donut dotfiles/mac/donut.c > /dev/null 2> errout
+
+if [ -s errout ]; then
+    rm errout
+    echo "gcc failed"
+else
+    mv donut ~/
+fi
+
 
 git clone https://github.com/alexander-the-alright/TDM
 go build TDM/tdm.go
