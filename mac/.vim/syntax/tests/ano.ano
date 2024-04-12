@@ -1,0 +1,37 @@
+# ==============================================================================
+# Auth: Alex Celani
+# File: test.prv
+# Revn: 04-17-2023  1.0
+# Func: show all of the functions of the prv syntax highlighting
+#
+# TODO: update as needed
+# ==============================================================================
+# CHANGE LOG
+# ------------------------------------------------------------------------------
+# 04-17-2023: wrote and commented
+#
+# ==============================================================================
+
+// we out here in that single line comment
+
+/* in-line comment */   un highlighted, not in brackets
+
+/* also functions as a
+   multiline comment */ notice how this is not highlighted
+
+// archie nicknames
+archie chach chibo
+
+// olly nicknames
+olly olly bolly bear 
+Oliver Boliver Rockford Gubbins
+
+// both
+sink boy
+of sealaND
+
+// parents
+mom and dad
+
+
+
