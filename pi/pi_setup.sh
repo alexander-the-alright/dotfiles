@@ -1,7 +1,7 @@
 # ========================================================================
 # Auth: alex
 # File: setup.sh
-# Revn: 07-11-2023  0.3
+# Revn: 09-23-2023  1.0
 # Func: automate pi setup
 #
 # TODO: get addnet/pipe to bash stuff to work
@@ -18,6 +18,7 @@
 #              empty and refill /etc/motd
 #              enabled ssh?
 #              fixed typo in golang download, had one, wanted L
+#*09-23-2023:  added command to install nmap
 #
 # ========================================================================
 
@@ -35,6 +36,9 @@ sudo apt install -y tmux
 
 # install tshark
 sudo apt install -y tshark
+
+# install nmap
+sudo apt install -y nmap
 
 # install golang
 wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
