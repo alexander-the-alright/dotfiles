@@ -1,10 +1,10 @@
 # ==============================================================================
 # Auth: dodd
 # File: .zshrc
-# Revn: 09-06-2023  0.1
+# Revn: 04-11-2024  1.0
 # Func: Define user-made aliases and functions to make using the terminal easier
 #
-# TODO: come up with new things to change
+# TODO: make bt functions to check for connection before dc/connecting
 # ==============================================================================
 # CHANGE LOG
 # ------------------------------------------------------------------------------
@@ -12,7 +12,16 @@
 #              copied over useful aliases from ocelot
 #              wrote function to ssh into ocelot remotely, ip robust
 # 09-09-2023:  added aliases to gcc and g++
-#
+# 09-10-2023:  added moved tdm and donut to ~/bin/, changed alias accordingly
+# 09-15-2023:  made ocelot and sentinel try local ssh before using $ip
+# 09-18-2023:  added vim alias to correct vim loading shitty colors
+# 12-28-2023:  added blueutil aliases to connect/dc from M50x's
+# 01-18-2024:  converted btutil aliases into functions
+#              added power on/off to btfunctions
+# 04-11-2024:  removed constant ip call, because of ddns (thanks luke)
+#              added o and p flags to ls alias
+#              gutted remote ssh calls, replaced with ddns
+#              
 # ==============================================================================
 
 
@@ -20,11 +29,24 @@
 ## Aliases
 
 ### Shows everything in detail, except . and ..
-alias ll="ls -AFGhl"
-alias  l="ls -AFGhl"
+# A - list ALL ( except for . and .. )
+# F - put symbols behind items in list
+# G - force color
+# h - human readable file sizes
+# l - long, list long
+# o - list long, omit group 
+alias ll="ls -AFGhlo"
+alias  l="ls -AFGhlo"
 
 ### Go home
 alias home="cd ~"
+
+### local ssh
+alias ocelot="ssh ocelot@192.168.1.120"
+alias sentinel="ssh -p 23 pi@192.168.1.169"
+alias rocelot="ssh ocelot@kaer-morhen.kozow.com"
+alias rocelot="ssh -p 23 pi@kaer-morhen.kozow.com"
+
 
 ### mac gcc is an alias for clang
 ### after downloading gcc, it's not in the global bin, it's local
@@ -32,36 +54,32 @@ alias gcc="/usr/local/bin/gcc-13"
 alias g++="/usr/local/bin/g++-13"
 
 ### donut
-alias donut="~/donut"
+alias donut="~/bin/donut"
+
+### tdm
+alias tdm="~/bin/tdm"
+alias vim="vim +\"colo real_def\""
 
 ### load changes to .zshrc
 alias src="source ~/.zshrc"
 
-### ssh into ocelot
-alias ocelot="ssh ocelot@192.168.1.120"
-
-### ssh into sentinel
-alias sentinel="ssh pi@192.168.1.169"
-
 ## Aliases
 
+
 ## Functions
-### ssh into ocelot remotely
-rocelot() {
-    # grab ip from ip repo
-    ip=$( cat ~/Documents/work/tax-returns-1997/data )
-    # ssh into ip from repo
-    ssh ocelot@$ip
+### turn on bluetooth and connect to m50x-bt
+### TODO make more robust? how does btutil react when bt is on
+### btutil -p 1 is run?
+bt() {
+    blueutil -p 1
+    blueutil --connect 00-0a-45-19-a0-4e    
 }
 
-### ssh into ocelot remotely
-rsentinel() {
-    # grab ip from ip repo
-    ip=$( cat ~/Documents/work/tax-returns-1997/data )
-    # ssh into ip from repo
-    # specify port 23, according to router settings, ssh port was
-    # moved from 22 to 23, to avoid collision with ocelot
-    ssh -p 23 pi@$ip
+
+### turn off bluetooth and dc from m50x-bt
+btdc() {
+    blueutil --disconnect 00-0a-45-19-a0-4e    
+    blueutil -p 0
 }
 
 ## Functions
