@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/Users/adamska/.vim/ftdetect'
+let g:netrw_dirhist_5='/Users/adamska/Documents/work/dotfiles/mac'
+let g:netrw_dirhist_4='/Users/adamska/Documents/work/dotfiles'
+let g:netrw_dirhist_3='/Users/adamska/Documents/work'
+let g:netrw_dirhist_2='/usr/share/vim/vim90'
+let g:netrw_dirhist_1='/Users/adamska/.vim'
