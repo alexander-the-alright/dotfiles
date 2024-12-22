@@ -1,10 +1,11 @@
 # ==============================================================================
 # Auth: dodd
 # File: .zshrc
-# Revn: 04-11-2024  1.0
+# Revn: 12-20-2024  1.5
 # Func: Define user-made aliases and functions to make using the terminal easier
 #
 # TODO: make bt functions to check for connection before dc/connecting
+#       research git command stuff
 # ==============================================================================
 # CHANGE LOG
 # ------------------------------------------------------------------------------
@@ -18,10 +19,18 @@
 # 12-28-2023:  added blueutil aliases to connect/dc from M50x's
 # 01-18-2024:  converted btutil aliases into functions
 #              added power on/off to btfunctions
-# 04-11-2024:  removed constant ip call, because of ddns (thanks luke)
+#*04-11-2024:  removed constant ip call, because of ddns (thanks luke)
 #              added o and p flags to ls alias
 #              gutted remote ssh calls, replaced with ddns
-#              
+# 05-11-2024:  added git branch recognition of some sort
+# 05-16-2024:  updated pi static IP's ( fuck speccy )
+#              fixed accidental yank and place of "-p 23" in sentinel
+# 06-07-2024:  updated pi public IP's ( fuck speccy again )
+#              fixed accidental renaming ofrsentinel as rocelot
+# 10-22-2024:  updated prompt, moving git branch to beginning
+#               placed branch inside double brackets, [[ ]] ( vcs_git )
+# 12-20-2024:  added -p flag to vim alias
+#
 # ==============================================================================
 
 
@@ -42,10 +51,10 @@ alias  l="ls -AFGhlo"
 alias home="cd ~"
 
 ### local ssh
-alias ocelot="ssh ocelot@192.168.1.120"
-alias sentinel="ssh -p 23 pi@192.168.1.169"
-alias rocelot="ssh ocelot@kaer-morhen.kozow.com"
-alias rocelot="ssh -p 23 pi@kaer-morhen.kozow.com"
+alias ocelot="ssh ocelot@192.168.1.152"
+alias sentinel="ssh pi@192.168.1.139"
+alias rocelot="ssh ocelot@97.70.74.80"
+alias rsentinel="ssh -p 23 pi@97.70.74.80"
 
 
 ### mac gcc is an alias for clang
@@ -58,7 +67,7 @@ alias donut="~/bin/donut"
 
 ### tdm
 alias tdm="~/bin/tdm"
-alias vim="vim +\"colo real_def\""
+alias vim="vim +\"colo real_def\" -p"
 
 ### load changes to .zshrc
 alias src="source ~/.zshrc"
@@ -88,13 +97,13 @@ btdc() {
 autoload -Uz vcs_info
 precmd() { vcs_info }
 
-zstyle ':vcs_info:git:*' formats '%b '
+zstyle ':vcs_info:git:*' formats '%F{white}<<%f%F{red}[[%b]]%f'
 
 # zsh.sourceforge.io/Doc/Release/Prompt-Expansion.html
 setopt PROMPT_SUBST
 # %F{color}...%f colors the encompassed text /color/
 # %m    -   shows the short machine name
 # %1d  -    current working directory
-PROMPT='%F{green}%m%f:%F{blue}%1~%f ⇌ '
+PROMPT='%F{green}%m%f%B%F{red}${vcs_info_msg_0_}%b%f::%F{blue}%1~%f ⇌ '
 #PROMPT='%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg0}%f$ '
 
