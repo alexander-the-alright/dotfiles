@@ -1,7 +1,7 @@
 " ====================================================================
 " Auth: dodd
 " File: .vimrc
-" Revn: 12-20-2024  2.2
+" Revn: 01-02-2025  3.0
 " Func: Define how Vim works, set parameters, define keymaps
 "
 " TODO: add in Greek keymaps
@@ -33,6 +33,8 @@
 " 12-20-2024:  changed :tabn/p clearing technique to C+l redraw
 "              read a bunch about marks
 "              added .h, .cpp, and .hpp ft template file recognition
+"*01-02-2025:  copy-pasted :tabn/p nnoremaps into inoremaps
+"              added nnoremap to convert window to tab
 "
 " ====================================================================
 
@@ -40,7 +42,7 @@
 syntax on
 
 " Reset highlight color for comments to lightblue
-"hi comment ctermfg=lightblue
+hi comment ctermfg=lightblue
 
 " Set line numbering and color of such
 set number
@@ -89,6 +91,14 @@ inoremap ()          ()
 " <C-l> ( Lowercase L ) redraws screen to remove :tabn/p
 nnoremap [           :tabp<Enter><C-l>
 nnoremap ]           :tabn<Enter><C-l>
+" the exact same things but in insert mode
+" need the <Esc> to get out of insert mode and the i to go back
+inoremap <F11>       <Esc>:tabp<Enter>i
+inoremap <F12>       <Esc>:tabn<Enter>i
+
+" auto convert window to tab
+" I think <C-w> focuses on the window and T converts it to tab
+nnoremap <F10>       <C-w>T
 
 " Auto infer declare/instantiate operator for GoLang
 "inoremap ;=          :=
