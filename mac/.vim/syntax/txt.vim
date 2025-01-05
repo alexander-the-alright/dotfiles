@@ -1,5 +1,5 @@
 " ====================================================================
-" Auth: Alex Celani
+" Auth: dodd
 " Lang: Text
 " Revn: 10-16-2020  1.5
 " Func: Define syntax coloring for .txt files when being edited in Vim

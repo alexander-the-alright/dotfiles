@@ -1,5 +1,5 @@
 # ========================================================================
-# Auth: alex
+# Auth:dodd
 # File: setup.sh
 # Revn: 01-04-2025  1.0
 # Func: automate pi setup

@@ -1,5 +1,5 @@
 # ====================================================================
-# Auth: Alex Celani
+# Auth: dodd
 # File: template.txt
 # Revn: 10-16-2020  1.0
 # Func: Demonstrate everything the text syntax file can do
