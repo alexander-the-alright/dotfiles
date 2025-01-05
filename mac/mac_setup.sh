@@ -1,7 +1,7 @@
 # ==============================================================================
 # Auth: dodd
 # File: mac_setup.sh
-# Revn: 12-20-2024  0.4
+# Revn: 01-04-2025  1.0
 # Func: re-setup terminal tools in mac
 #
 # TODO: improve
@@ -16,6 +16,7 @@
 # 12-18-2024: made dotfiles symlink instead of copied diverging files
 # 12-20-2024: corrected relative pathing issue with symlinks
 #             fixed bugs in cp mes.as and dos.sh lines
+#*01-14-2025: fixed typo in .vimrc symlink
 #
 # ==============================================================================
 
@@ -48,7 +49,7 @@ cd ~/Documents/work
 git clone https://github.com/alexander-the-alright/dotfiles
 
 ln -s ~/Documents/work/dotfiles/mac/.zshrc ~/.zshrc
-ln -s ~/Documents/work/dotfiles/mac/.vimrc ~/.vimrc
+ln -s ~/Documents/work/dotfiles/.vimrc ~/.vimrc
 ln -s ~/Documents/work/dotfiles/mac/.vim ~/.vim
 
 #cp dotfiles/mac/.zshrc ~/
