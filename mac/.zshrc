@@ -1,7 +1,7 @@
 # ==============================================================================
 # Auth: dodd
 # File: .zshrc
-# Revn: 12-20-2024  1.5
+# Revn: 01-02-2025  2.0
 # Func: Define user-made aliases and functions to make using the terminal easier
 #
 # TODO: make bt functions to check for connection before dc/connecting
@@ -30,6 +30,7 @@
 # 10-22-2024:  updated prompt, moving git branch to beginning
 #               placed branch inside double brackets, [[ ]] ( vcs_git )
 # 12-20-2024:  added -p flag to vim alias
+#*01-02-2025:  wrote and commented oops()
 #
 # ==============================================================================
 
@@ -67,6 +68,8 @@ alias donut="~/bin/donut"
 
 ### tdm
 alias tdm="~/bin/tdm"
+
+### vim
 alias vim="vim +\"colo real_def\" -p"
 
 ### load changes to .zshrc
@@ -89,6 +92,26 @@ bt() {
 btdc() {
     blueutil --disconnect 00-0a-45-19-a0-4e    
     blueutil -p 0
+}
+
+
+### correct mistaken commands
+oops() {
+    # not exactly sure this works on zsh
+    # but in *bash*
+    # $1 is the argument given to the function
+    # and $_ is the arguments from the previous command
+    # so the idea is that if you do like 
+    # ls ~/.vim/syntax/commentS.txt
+    # and you wanna do vim ~/.vim/syntax/commentS.txt
+    # but don't wanna type it all out again
+    # you do can just do 
+    # ls ~/.vim/syntax/commentS.txt
+    # oops vim
+    # and it works
+    $1 $_
+    # TODO improve with bangs, so the correct command is stored in
+    # history
 }
 
 ## Functions
