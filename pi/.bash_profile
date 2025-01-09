@@ -1,5 +1,5 @@
 # ==============================================================================
-# Auth:dodd
+# Auth: dodd
 # File: .bashrc
 # Revn: 01-04-2025  1.0
 # Func: Define user-made aliases and functions to make using the terminal easier
