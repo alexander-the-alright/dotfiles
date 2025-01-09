@@ -1,0 +1,27 @@
+# ==============================================================================
+# Auth: dodd
+# File: todo.txt
+# Revn: 01-08-2025  0.1
+# Func: todo
+#
+# TODO: create
+# ==============================================================================
+# CHANGE LOG
+# ------------------------------------------------------------------------------
+# 01-07-2025: init
+# 01-08-2025: remembered crontab exists
+#
+# ==============================================================================
+
+
+pi_id:: case/esac for PS1
+     :: test current ( 01-07-2025 ) commands
+
+pi_setup:: replace motd
+           -> write down all places it's found
+           -> keep copies of final files after adjustment
+           -> look up better places to light LEDs and call ekho tbh
+              -> I don't think .bashrc is the right place to do those
+                 things
+           -> crontab
+
