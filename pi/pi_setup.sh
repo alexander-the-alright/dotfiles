@@ -1,7 +1,7 @@
 # ========================================================================
-# Auth:dodd
+# Auth: dodd
 # File: setup.sh
-# Revn: 01-04-2025  1.0
+# Revn: 01-07-2025  2.0
 # Func: automate pi setup
 #
 # TODO
@@ -35,6 +35,7 @@
 #              uncommented building TDM and mv'ing binary to ~/bin
 #              built ekho, moved to ~/bin/
 #              copied, built, and moved donut/boot to ~/src/ and ~/bin/
+#*01-07-2025:  added symlink for .tmux.conf
 #
 # ========================================================================
 
@@ -97,6 +98,7 @@ cd ~
 ln -sf ~/Documents/dotfiles/pi/.vim ~/.vim
 ln -sf ~/Documents/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/Documents/dotfiles/pi/.bash_profile ~/.bashrc
+ln -sf ~/Documents/dotfiles/pi/.tmux.conf ~/.tmux.conf
 
 # copy and build binaries
 cp ~/Documents/dotfiles/pi/donut.c ~/src
