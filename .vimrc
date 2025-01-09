@@ -1,7 +1,7 @@
 " ====================================================================
 " Auth: dodd
 " File: .vimrc
-" Revn: 01-02-2025  3.0
+" Revn: 01-08-2025  4.0
 " Func: Define how Vim works, set parameters, define keymaps
 "
 " TODO: add in Greek keymaps
@@ -35,6 +35,12 @@
 "              added .h, .cpp, and .hpp ft template file recognition
 "*01-02-2025:  copy-pasted :tabn/p nnoremaps into inoremaps
 "              added nnoremap to convert window to tab
+" 01-07-2025:  set search highlighting to true
+"              added i and n no-re maps to turn off highlighting
+"              fixed <F9, 10, and 11> inoremap bug that didn't keep
+"                 the cursor in place
+"*01-08-2025:  actually fixed this ^^^ bug, instead of just thinking
+"                 that I fixed it
 "
 " ====================================================================
 
@@ -66,6 +72,9 @@ set autoindent
 " Sets character length of line to 70 characters, linewraps
 set tw=70
 
+" set search highlighting to on
+set hlsearch
+
 " some way, somehow, this displays the file name at the bottom
 set laststatus=2
 
@@ -93,12 +102,16 @@ nnoremap [           :tabp<Enter><C-l>
 nnoremap ]           :tabn<Enter><C-l>
 " the exact same things but in insert mode
 " need the <Esc> to get out of insert mode and the i to go back
-inoremap <F11>       <Esc>:tabp<Enter>i
-inoremap <F12>       <Esc>:tabn<Enter>i
+inoremap <F11>       <Esc>:tabp<Enter>i<Right>
+inoremap <F12>       <Esc>:tabn<Enter>i<Right>
 
 " auto convert window to tab
 " I think <C-w> focuses on the window and T converts it to tab
 nnoremap <F10>       <C-w>T
+
+" turn off search highlights
+nnoremap <F9>        :nohl<Enter><C-l>
+inoremap <F9>        <Esc>:nohl<Enter>i<Right>
 
 " Auto infer declare/instantiate operator for GoLang
 "inoremap ;=          :=
